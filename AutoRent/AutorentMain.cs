@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AutoRent
 {
-    public partial class Form1 : Form
+    public partial class AutorentMain : Form
     {
-        public Form1()
+        public AutorentMain()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

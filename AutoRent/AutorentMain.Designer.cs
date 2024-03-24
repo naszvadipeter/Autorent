@@ -1,6 +1,6 @@
 ﻿namespace AutoRent
 {
-    partial class Form1
+    partial class AutorentMain
     {
         /// <summary>
         /// Required designer variable.
@@ -34,22 +34,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(63, 78);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(12, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(557, 29);
+            this.label1.Size = new System.Drawing.Size(732, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Test: this label only exists in the beadando1 branch";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "This will be the main Form, it will appear after succesfully logging in";
             // 
-            // Form1
+            // AutorentMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "AutorentMain";
+            this.Text = "Autorent - main";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -60,4 +59,3 @@
         private System.Windows.Forms.Label label1;
     }
 }
-
