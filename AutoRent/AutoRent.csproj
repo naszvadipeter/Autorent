@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -73,6 +74,11 @@
     <Compile Include="CarCard.Designer.cs">
       <DependentUpon>CarCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Rental.cs" />
+    <Compile Include="Models\Sale.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AutorentCar.resx">
