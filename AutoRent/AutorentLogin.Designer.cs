@@ -59,13 +59,17 @@
             // 
             // button_login
             // 
+            this.button_login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(89)))), ((int)(((byte)(78)))));
+            this.button_login.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button_login.FlatAppearance.BorderSize = 0;
             this.button_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
             this.button_login.Location = new System.Drawing.Point(320, 309);
             this.button_login.Name = "button_login";
-            this.button_login.Size = new System.Drawing.Size(142, 48);
+            this.button_login.Size = new System.Drawing.Size(142, 53);
             this.button_login.TabIndex = 2;
             this.button_login.Text = "Login";
-            this.button_login.UseVisualStyleBackColor = true;
+            this.button_login.UseVisualStyleBackColor = false;
             this.button_login.Click += new System.EventHandler(this.button_login_Click);
             // 
             // textBox_username
@@ -109,6 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label_password);
             this.Controls.Add(this.label_username);
