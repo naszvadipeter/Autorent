@@ -10,7 +10,7 @@ namespace AutoRent
 {
     internal class Connection
     {
-        public const string URL = "https://localhost:7204";
+        public const string URL = "https://localhost:7253";
 
         public Connection() { }
 

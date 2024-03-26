@@ -20,7 +20,7 @@ namespace AutoRent
         private void button_login_Click(object sender, EventArgs e)
         {
             // This will happen if login was successful :
-            AutorentMain mainForm = new AutorentMain();
+            AutorentMain mainForm = new AutorentMain(this);
             this.Hide();
             mainForm.Show();
             mainForm.FormClosed += AutorentMain_FormClosed;

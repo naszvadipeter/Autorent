@@ -14,18 +14,16 @@ namespace AutoRent
 {
     public partial class AutorentMain : Form
     {
-        public AutorentMain()
+        AutorentLogin loginForm;
+
+        public AutorentMain(AutorentLogin loginForm)
         {
             InitializeComponent();
             PopulateCars();
+            //var con = new Connection();
             comboBox_category.SelectedIndex = 0;
+            this.loginForm = loginForm;
         }
-
-        //private void AutorentMain_Load(object sender, EventArgs e)
-        //{
-        //    PopulateCars();
-        //    Debug.WriteLine("ASD");
-        //}
 
         private void PopulateCars()
         {
@@ -46,6 +44,12 @@ namespace AutoRent
                 flowLayoutPanel_cars.Controls.Add(carCards[i]);
             }
             
+        }
+
+        private void button_logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Restart();
         }
     }
 }
