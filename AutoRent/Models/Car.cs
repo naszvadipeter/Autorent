@@ -20,5 +20,8 @@ namespace AutoRent.Models
         public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 
         public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
+
+        // Property
+        public string Name => $"{Brand} {Model}";
     }
 }
