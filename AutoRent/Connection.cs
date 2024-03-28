@@ -1,4 +1,5 @@
 ﻿using AutoRent.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,29 @@ namespace AutoRent
 
         public Connection() { }
 
+        public int? Login(string username, string password)
+        {
+            using (var client = new WebClient())
+            {
+                var dataString = JsonConvert.SerializeObject(new { username = username, password = password });
+                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                string response = client.UploadString(new Uri($"{URL}/login"), "POST", dataString);
+                return ToNullableInt(response);
+            }
+        }
+
+        public User GetUser(int userId)
+        {
+            using (var wb = new WebClient())
+            {
+                var response = wb.DownloadString($"{URL}/getUser?id={userId}");
+
+                User user = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(response);
+
+                return user;
+            }
+        }
+
         public List<Car> GetAllCars()
         {
             using (var wb = new WebClient())
@@ -23,5 +47,15 @@ namespace AutoRent
                 return carsList;
             }
         }
+
+        #region Extra methods
+        public static int? ToNullableInt(string s)
+        {
+            int i;
+            if (int.TryParse(s, out i)) 
+                return i;
+            return null;
+        }
+        #endregion
     }
 }
