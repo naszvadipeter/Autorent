@@ -21,7 +21,7 @@ namespace AutoRent.Models
 
         public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 
-        public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
+        public virtual Sale Sale { get; set; }
 
         // Plus field (for Image) [not in database]
         public byte[] ByteImage { get; set; }
