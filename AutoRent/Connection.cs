@@ -34,7 +34,7 @@ namespace AutoRent
             {
                 var response = wb.DownloadString($"{URL}/getUser?id={userId}");
 
-                User user = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(response);
+                User user = JsonConvert.DeserializeObject<User>(response);
 
                 return user;
             }

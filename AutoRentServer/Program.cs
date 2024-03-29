@@ -1,6 +1,5 @@
 using AutoRentServer.Models.Autorent;
 using Newtonsoft.Json;
-using System.Drawing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,10 +22,10 @@ app.MapGet("/getUser", (int id) =>
     AutorentContext _autorent = new AutorentContext();
     User? user = _autorent.Users.FirstOrDefault(x => x.Id == id);
 
-    return JsonConvert.SerializeObject(user, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
+    return JsonConvert.SerializeObject(user, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 });
 
-
+// GetAllCars
 app.MapGet("/getAllCars", () =>
 {
     AutorentContext _autorent = new AutorentContext();
@@ -44,9 +43,10 @@ app.MapGet("/getAllCars", () =>
         ByteImage = File.Exists($"img/{x.Id}.jpg") ? File.ReadAllBytes($"img/{x.Id}.jpg") : null
     }).ToList();
 
-    return JsonConvert.SerializeObject(cars, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
+    return JsonConvert.SerializeObject(cars, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 });
 
+// GetCarImage
 app.MapGet("/getCarImage", (int carId) =>
 {
     byte[]? imageBytes = File.Exists($"img/{carId}.jpg") ? File.ReadAllBytes($"img/{carId}.jpg") : null;
