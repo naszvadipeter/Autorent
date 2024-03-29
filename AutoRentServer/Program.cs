@@ -36,6 +36,14 @@ app.MapGet("/getAllCars", () =>
     return JsonConvert.SerializeObject(cars, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
 });
 
+app.MapGet("/getCarImage", (int carId) =>
+{
+    byte[] imageBytes = File.ReadAllBytes($"img/{carId}.jpg");
+    string base64String = Convert.ToBase64String(imageBytes);
+
+    return JsonConvert.SerializeObject(base64String, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+});
+
 app.Run();
 
 #region Extra classes
