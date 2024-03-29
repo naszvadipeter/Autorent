@@ -40,7 +40,7 @@ app.MapGet("/getAllCars", () =>
         DailyPrice = x.DailyPrice,
         Category = x.Category,
         Rentals = x.Rentals,
-        Sales = x.Sales,
+        Sale = x.Sale,
         ByteImage = File.ReadAllBytes($"img/{x.Id}.jpg")
     }).ToList();
 

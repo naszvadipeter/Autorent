@@ -15,9 +15,11 @@ public partial class Car
 
     public int? DailyPrice { get; set; }
 
+    public int? SaleId { get; set; }
+
     public virtual Category? Category { get; set; }
 
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 
-    public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
+    public virtual Sale? Sale { get; set; }
 }

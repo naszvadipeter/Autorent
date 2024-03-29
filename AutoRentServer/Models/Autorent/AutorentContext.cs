@@ -40,6 +40,8 @@ public partial class AutorentContext : DbContext
 
             entity.ToTable("cars");
 
+            entity.HasIndex(e => e.SaleId, "FK_cars_sales");
+
             entity.HasIndex(e => e.CategoryId, "category_id");
 
             entity.Property(e => e.Id)
@@ -57,10 +59,17 @@ public partial class AutorentContext : DbContext
             entity.Property(e => e.Model)
                 .HasMaxLength(255)
                 .HasColumnName("model");
+            entity.Property(e => e.SaleId)
+                .HasColumnType("int(11)")
+                .HasColumnName("sale_id");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Cars)
                 .HasForeignKey(d => d.CategoryId)
                 .HasConstraintName("cars_ibfk_1");
+
+            entity.HasOne(d => d.Sale).WithMany(p => p.Cars)
+                .HasForeignKey(d => d.SaleId)
+                .HasConstraintName("FK_cars_sales");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -119,24 +128,15 @@ public partial class AutorentContext : DbContext
 
             entity.ToTable("sales");
 
-            entity.HasIndex(e => e.CarId, "car_id");
-
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
-            entity.Property(e => e.CarId)
-                .HasColumnType("int(11)")
-                .HasColumnName("car_id");
             entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .HasColumnName("description");
             entity.Property(e => e.Percent)
                 .HasColumnType("int(11)")
                 .HasColumnName("percent");
-
-            entity.HasOne(d => d.Car).WithMany(p => p.Sales)
-                .HasForeignKey(d => d.CarId)
-                .HasConstraintName("sales_ibfk_1");
         });
 
         modelBuilder.Entity<User>(entity =>

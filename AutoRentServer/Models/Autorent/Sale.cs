@@ -7,11 +7,9 @@ public partial class Sale
 {
     public int Id { get; set; }
 
-    public int? CarId { get; set; }
-
     public string? Description { get; set; }
 
     public int? Percent { get; set; }
 
-    public virtual Car? Car { get; set; }
+    public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
 }
