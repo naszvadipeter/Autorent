@@ -72,6 +72,16 @@ namespace AutoRent
             }
         }
 
+        public List<Category> GetAllCategories()
+        {
+            using (var wb = new WebClient())
+            {
+                var response = wb.DownloadString($"{URL}/getAllCategories");
+                List<Category> categoryList = JsonConvert.DeserializeObject<List<Category>>(response);
+                return categoryList;
+            }
+        }
+
         #region Extra methods
         public static int? ToNullableInt(string s)
         {
