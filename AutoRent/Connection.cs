@@ -55,15 +55,20 @@ namespace AutoRent
             using (var wb = new WebClient())
             {
                 var response = wb.DownloadString($"{URL}/getCarImage?carId={carId}");
+                byte[] imageBytes = JsonConvert.DeserializeObject<byte[]>(response);
 
-                string base64String = JsonConvert.DeserializeObject<string>(response);
-                byte[] imageBytes = Convert.FromBase64String(base64String);
-
-                using (MemoryStream ms = new MemoryStream(imageBytes))
+                Image image;
+                if (imageBytes != null)
                 {
-                    Image image = Image.FromStream(ms);
-                    return image;
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        image = Image.FromStream(ms);
+                    }
                 }
+                else
+                    image = new Bitmap(16, 16); // "Empty" image
+
+                return image;
             }
         }
 

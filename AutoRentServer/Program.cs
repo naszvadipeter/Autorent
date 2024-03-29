@@ -49,8 +49,10 @@ app.MapGet("/getAllCars", () =>
 
 app.MapGet("/getCarImage", (int carId) =>
 {
-    byte[] imageBytes = File.ReadAllBytes($"img/{carId}.jpg");
-    string base64String = Convert.ToBase64String(imageBytes);
+    byte[]? imageBytes = File.Exists($"img/{carId}.jpg") ? File.ReadAllBytes($"img/{carId}.jpg") : null;
+
+    return JsonConvert.SerializeObject(imageBytes, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+});
 
     return JsonConvert.SerializeObject(base64String, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 });
