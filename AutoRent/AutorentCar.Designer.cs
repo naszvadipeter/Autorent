@@ -238,7 +238,7 @@
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.monthCalendar_date);
             this.Name = "AutorentCar";
-            this.Text = "AurorentCar";
+            this.Text = "AutorentCar";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
