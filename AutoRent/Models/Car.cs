@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 
 namespace AutoRent.Models
 {
@@ -21,7 +23,22 @@ namespace AutoRent.Models
 
         public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
 
+        // Plus field (for Image) [not in database]
+        public byte[] ByteImage { get; set; }
+
         // Property
         public string Name => $"{Brand} {Model}";
+
+        public Image CarImage
+        {
+            get
+            {
+                using (MemoryStream ms = new MemoryStream(this.ByteImage))
+                {
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+            }
+        }
     }
 }
