@@ -41,7 +41,7 @@ app.MapGet("/getAllCars", () =>
         Category = x.Category,
         Rentals = x.Rentals,
         Sale = x.Sale,
-        ByteImage = File.ReadAllBytes($"img/{x.Id}.jpg")
+        ByteImage = File.Exists($"img/{x.Id}.jpg") ? File.ReadAllBytes($"img/{x.Id}.jpg") : null
     }).ToList();
 
     return JsonConvert.SerializeObject(cars, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
