@@ -1,5 +1,6 @@
 using AutoRentServer.Models.Autorent;
 using Newtonsoft.Json;
+using System.Drawing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,17 @@ app.MapGet("/getAllCars", () =>
     AutorentContext _autorent = new AutorentContext();
     _autorent.Categories.ToList();
 
-    List<Car> cars = _autorent.Cars.ToList();
+    var cars = _autorent.Cars.Select(x => new { 
+        Id = x.Id,
+        CategoryId = x.CategoryId,
+        Brand = x.Brand,
+        Model = x.Model,
+        DailyPrice = x.DailyPrice,
+        Category = x.Category,
+        Rentals = x.Rentals,
+        Sales = x.Sales,
+        ByteImage = File.ReadAllBytes($"img/{x.Id}.jpg")
+    }).ToList();
 
     return JsonConvert.SerializeObject(cars, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
 });
