@@ -40,5 +40,11 @@ namespace AutoRent.Models
                 }
             }
         }
+
+        public bool IsDiscounted => this.Sale != null;
+
+        public int? Discount => this.Sale != null ? this.Sale.Percent : 0;
+
+        public int RealPrice => this.Sale != null ? (int)Math.Round(1.0 * (DailyPrice * (1 - (1.0 * Sale.Percent / 100))), 0) : DailyPrice;
     }
 }
