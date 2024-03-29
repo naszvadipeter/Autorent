@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -45,6 +47,23 @@ namespace AutoRent
                 var response = wb.DownloadString($"{URL}/getAllCars");
                 List<Car> carsList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Car>>(response);
                 return carsList;
+            }
+        }
+
+        public Image GetCarImage(int carId)
+        {
+            using (var wb = new WebClient())
+            {
+                var response = wb.DownloadString($"{URL}/getCarImage?carId={carId}");
+
+                string base64String = JsonConvert.DeserializeObject<string>(response);
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
             }
         }
 
