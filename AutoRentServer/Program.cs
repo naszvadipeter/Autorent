@@ -54,7 +54,14 @@ app.MapGet("/getCarImage", (int carId) =>
     return JsonConvert.SerializeObject(imageBytes, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 });
 
-    return JsonConvert.SerializeObject(base64String, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+// GetAllCategories
+app.MapGet("/getAllCategories", () =>
+{
+    AutorentContext _autorent = new AutorentContext();
+    _autorent.Cars.ToList();
+    List<Category> categories = _autorent.Categories.ToList();
+
+    return JsonConvert.SerializeObject(categories, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
 });
 
 app.Run();
