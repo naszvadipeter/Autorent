@@ -61,5 +61,20 @@ namespace AutoRent.Models
                 return allDates;
             }
         }
+
+        // Methods
+        public bool IsPeriodAvailable(DateTime fromDate, DateTime toDate)
+        {
+            List<string> allDates = new List<string>();
+            for (DateTime date = fromDate; date <= toDate; date = date.AddDays(1))
+                allDates.Add(date.ToString("yyy.MM.dd"));
+
+            return !allDates.Any(x => UnavailableDates.Contains(x));
+        }
+
+        public bool IsPeriodAvailable(string fromDate, string toDate)
+        {
+            return IsPeriodAvailable(DateTime.Parse(fromDate), DateTime.Parse(toDate));
+        }
     }
 }
