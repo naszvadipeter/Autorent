@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_menu = new System.Windows.Forms.Panel();
+            this.button_logout = new System.Windows.Forms.Button();
             this.button_news = new System.Windows.Forms.Button();
             this.button_previousRents = new System.Windows.Forms.Button();
             this.comboBox_category = new System.Windows.Forms.ComboBox();
@@ -36,7 +37,6 @@
             this.button_showSale = new System.Windows.Forms.Button();
             this.button_showAll = new System.Windows.Forms.Button();
             this.flowLayoutPanel_cars = new System.Windows.Forms.FlowLayoutPanel();
-            this.button_logout = new System.Windows.Forms.Button();
             this.panel_menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,19 @@
             this.panel_menu.Name = "panel_menu";
             this.panel_menu.Size = new System.Drawing.Size(286, 544);
             this.panel_menu.TabIndex = 1;
+            // 
+            // button_logout
+            // 
+            this.button_logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.button_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_logout.ForeColor = System.Drawing.Color.Black;
+            this.button_logout.Location = new System.Drawing.Point(34, 463);
+            this.button_logout.Name = "button_logout";
+            this.button_logout.Size = new System.Drawing.Size(222, 56);
+            this.button_logout.TabIndex = 6;
+            this.button_logout.Text = "Log out";
+            this.button_logout.UseVisualStyleBackColor = false;
+            this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
             // 
             // button_news
             // 
@@ -116,6 +129,7 @@
             this.button_showSale.TabIndex = 1;
             this.button_showSale.Text = "Show sale";
             this.button_showSale.UseVisualStyleBackColor = false;
+            this.button_showSale.Click += new System.EventHandler(this.button_showSale_Click);
             // 
             // button_showAll
             // 
@@ -128,6 +142,7 @@
             this.button_showAll.TabIndex = 0;
             this.button_showAll.Text = "Show all";
             this.button_showAll.UseVisualStyleBackColor = false;
+            this.button_showAll.Click += new System.EventHandler(this.button_showAll_Click);
             // 
             // flowLayoutPanel_cars
             // 
@@ -139,19 +154,6 @@
             this.flowLayoutPanel_cars.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.flowLayoutPanel_cars.Size = new System.Drawing.Size(800, 544);
             this.flowLayoutPanel_cars.TabIndex = 2;
-            // 
-            // button_logout
-            // 
-            this.button_logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.button_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_logout.ForeColor = System.Drawing.Color.Black;
-            this.button_logout.Location = new System.Drawing.Point(34, 463);
-            this.button_logout.Name = "button_logout";
-            this.button_logout.Size = new System.Drawing.Size(222, 56);
-            this.button_logout.TabIndex = 6;
-            this.button_logout.Text = "Log out";
-            this.button_logout.UseVisualStyleBackColor = false;
-            this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
             // 
             // AutorentMain
             // 

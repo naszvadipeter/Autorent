@@ -26,10 +26,10 @@ namespace AutoRent
             comboBox_category.SelectedIndex = 0;
             this.loginForm = loginForm;
 
-            PopulateCars();
+            PopulateCars(false);
         }
 
-        private void PopulateCars()
+        private void PopulateCars(bool discountedOnly)
         {
             List<Car> cars = connection.GetAllCars();
             if (flowLayoutPanel_cars.Controls.Count > 0)
@@ -38,16 +38,36 @@ namespace AutoRent
             }
             foreach (Car car in cars)
             {
-                CarCard carCard = new CarCard(car, this);
-                flowLayoutPanel_cars.Controls.Add(carCard);
+                if (discountedOnly)
+                {
+                    if (car.IsDiscounted)
+                    {
+                        CarCard carCard = new CarCard(car, this);
+                        flowLayoutPanel_cars.Controls.Add(carCard);
+                    }
+                }
+                else
+                {
+                    CarCard carCard = new CarCard(car, this);
+                    flowLayoutPanel_cars.Controls.Add(carCard);
+                }
             }
-            
         }
 
         private void button_logout_Click(object sender, EventArgs e)
         {
             this.Close();
             Application.Restart();
+        }
+
+        private void button_showAll_Click(object sender, EventArgs e)
+        {
+            PopulateCars(false);
+        }
+
+        private void button_showSale_Click(object sender, EventArgs e)
+        {
+            PopulateCars(true);
         }
     }
 }
