@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoRent.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,68 +15,72 @@ namespace AutoRent
     {
         private AutorentMain mainForm;
 
-        public CarCard(AutorentMain main)
+        public CarCard(Car car, AutorentMain main)
         {
             InitializeComponent();
+            this.car = car;
             this.mainForm = main;
+
+            label_carName.Text = car.Name;
+            label_carCategory.Text = car.Category.Name;
+            label_carPriceOriginal.Text = car.DailyPrice + " Ft";
+            label_carPriceSale.Text = car.RealPrice + " Ft";
+            label_carSaleAmount.Text = "-" + car.Discount + "%";
+            pictureBox_carImage.Image = car.CarImage;
+
+            if (car.IsDiscounted)
+            {
+                label_carPriceSale.Visible = true;
+                label_carSaleAmount.Visible = true;
+                label_carPriceOriginal.Font = new Font(label_carPriceOriginal.Font, FontStyle.Strikeout);
+            }
         }
 
         #region Properties
 
-        private string carName;
-        private string carCategory;
-        private string carPriceOriginal;
-        private string carPriceSale;
-        private string carSaleAmount;
-        private Image carImage;
+        private Car car;
 
         [Category("Car properties")]
         public string CarName
         {
-            get { return carName; }
-            set { carName = value; label_carName.Text = value; }
+            get { return car.Name; }
         }
 
         [Category("Car properties")]
         public string CarCategory
         {
-            get { return carCategory; }
-            set { carCategory = value; label_carCategory.Text = value; }
+            get { return car.Category.Name; }
         }
 
         [Category("Car properties")]
         public string CarPriceOriginal
         {
-            get { return carPriceOriginal; }
-            set { carPriceOriginal = value; label_carPriceOriginal.Text = value; }
+            get { return car.DailyPrice + " Ft"; }
         }
 
         [Category("Car properties")]
         public string CarPriceSale
         {
-            get { return carPriceSale; }
-            set { carPriceSale = value; label_carPriceSale.Text = value; }
+            get { return car.RealPrice + " Ft"; }
         }
 
         [Category("Car properties")]
         public string CarSaleAmount
         {
-            get { return carSaleAmount; }
-            set { carSaleAmount = value; label_carSaleAmount.Text = value; }
+            get { return car.Discount + "%"; }
         }
 
         [Category("Car properties")]
         public Image CarImage
         {
-            get { return carImage; }
-            set { carImage = value; pictureBox_carImage.Image = value; }
+            get { return car.CarImage; }
         }
 
         #endregion
 
         private void button_seeAvailability_Click(object sender, EventArgs e)
         {
-            AutorentCar autorentCarForm = new AutorentCar(carName, carCategory, carPriceOriginal, carPriceSale, carSaleAmount, carImage, mainForm);
+            AutorentCar autorentCarForm = new AutorentCar(car, mainForm);
             mainForm.Hide();
             autorentCarForm.Show();
             autorentCarForm.FormClosed += AutorentCar_FormClosed;

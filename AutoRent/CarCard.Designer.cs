@@ -43,7 +43,7 @@
             // 
             this.label_carName.AutoSize = true;
             this.label_carName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carName.Location = new System.Drawing.Point(212, 16);
+            this.label_carName.Location = new System.Drawing.Point(227, 16);
             this.label_carName.Name = "label_carName";
             this.label_carName.Size = new System.Drawing.Size(230, 29);
             this.label_carName.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             this.label_carCategory.AutoSize = true;
             this.label_carCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carCategory.Location = new System.Drawing.Point(212, 54);
+            this.label_carCategory.Location = new System.Drawing.Point(227, 54);
             this.label_carCategory.Name = "label_carCategory";
             this.label_carCategory.Size = new System.Drawing.Size(92, 25);
             this.label_carCategory.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             this.label_carPriceOriginal.AutoSize = true;
             this.label_carPriceOriginal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carPriceOriginal.Location = new System.Drawing.Point(212, 92);
+            this.label_carPriceOriginal.Location = new System.Drawing.Point(227, 92);
             this.label_carPriceOriginal.Name = "label_carPriceOriginal";
             this.label_carPriceOriginal.Size = new System.Drawing.Size(126, 25);
             this.label_carPriceOriginal.TabIndex = 3;
@@ -104,12 +104,14 @@
             // label_carPriceSale
             // 
             this.label_carPriceSale.AutoSize = true;
+            this.label_carPriceSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.label_carPriceSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_carPriceSale.Location = new System.Drawing.Point(358, 92);
             this.label_carPriceSale.Name = "label_carPriceSale";
             this.label_carPriceSale.Size = new System.Drawing.Size(99, 25);
             this.label_carPriceSale.TabIndex = 7;
             this.label_carPriceSale.Text = "Sale price";
+            this.label_carPriceSale.Visible = false;
             // 
             // label_carSaleAmount
             // 
@@ -121,6 +123,7 @@
             this.label_carSaleAmount.Size = new System.Drawing.Size(73, 29);
             this.label_carSaleAmount.TabIndex = 8;
             this.label_carSaleAmount.Text = "-15%";
+            this.label_carSaleAmount.Visible = false;
             // 
             // CarCard
             // 

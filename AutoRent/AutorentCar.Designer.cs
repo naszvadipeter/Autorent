@@ -95,16 +95,21 @@
             this.label_carSaleAmount.Size = new System.Drawing.Size(73, 29);
             this.label_carSaleAmount.TabIndex = 13;
             this.label_carSaleAmount.Text = "-15%";
+            this.label_carSaleAmount.Visible = false;
             // 
             // label_carPriceSale
             // 
+            this.label_carPriceSale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label_carPriceSale.AutoSize = true;
             this.label_carPriceSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carPriceSale.Location = new System.Drawing.Point(232, 446);
+            this.label_carPriceSale.Location = new System.Drawing.Point(255, 446);
             this.label_carPriceSale.Name = "label_carPriceSale";
             this.label_carPriceSale.Size = new System.Drawing.Size(132, 29);
             this.label_carPriceSale.TabIndex = 12;
             this.label_carPriceSale.Text = "Sale price";
+            this.label_carPriceSale.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label_carPriceSale.Visible = false;
             // 
             // label_carPriceOriginal
             // 

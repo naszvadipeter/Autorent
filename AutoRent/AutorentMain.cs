@@ -1,4 +1,5 @@
-﻿using AutoRent.Properties;
+﻿using AutoRent.Models;
+using AutoRent.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,33 +16,30 @@ namespace AutoRent
     public partial class AutorentMain : Form
     {
         AutorentLogin loginForm;
+        Connection connection;
 
         public AutorentMain(AutorentLogin loginForm)
         {
             InitializeComponent();
-            PopulateCars();
-            //var con = new Connection();
+            connection = new Connection();
+
             comboBox_category.SelectedIndex = 0;
             this.loginForm = loginForm;
+
+            PopulateCars();
         }
 
         private void PopulateCars()
         {
-            CarCard[] carCards = new CarCard[10];
+            List<Car> cars = connection.GetAllCars();
             if (flowLayoutPanel_cars.Controls.Count > 0)
             {
                 flowLayoutPanel_cars.Controls.Clear();
             }
-            for (int i = 0; i < carCards.Length; i++)
+            foreach (Car car in cars)
             {
-                carCards[i] = new CarCard(this);
-                carCards[i].CarName = "Ford Mustang";
-                carCards[i].CarCategory = "Petrol";
-                carCards[i].CarPriceOriginal = "50.000,-";
-                carCards[i].CarPriceSale = "35.000,-";
-                carCards[i].CarSaleAmount = "-30%";
-                carCards[i].CarImage = Resources.ford_mustang;
-                flowLayoutPanel_cars.Controls.Add(carCards[i]);
+                CarCard carCard = new CarCard(car, this);
+                flowLayoutPanel_cars.Controls.Add(carCard);
             }
             
         }
