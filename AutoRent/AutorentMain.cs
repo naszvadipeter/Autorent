@@ -18,6 +18,7 @@ namespace AutoRent
         AutorentLogin loginForm;
         Connection connection;
 
+        bool showingDiscountedOnly;
         List<Category> categories;
 
         public AutorentMain(AutorentLogin loginForm)
@@ -25,6 +26,7 @@ namespace AutoRent
             InitializeComponent();
             connection = new Connection();
             this.loginForm = loginForm;
+            showingDiscountedOnly = false;
 
             categories = connection.GetAllCategories();
             comboBox_category.Items.Add("All");
@@ -39,6 +41,8 @@ namespace AutoRent
 
         private void PopulateCars(bool discountedOnly)
         {
+            int filterID = comboBox_category.SelectedIndex;
+
             List<Car> cars = connection.GetAllCars();
             if (flowLayoutPanel_cars.Controls.Count > 0)
             {
@@ -50,14 +54,20 @@ namespace AutoRent
                 {
                     if (car.IsDiscounted)
                     {
-                        CarCard carCard = new CarCard(car, this);
-                        flowLayoutPanel_cars.Controls.Add(carCard);
+                        if (filterID == 0 || filterID == car.CategoryId)
+                        {
+                            CarCard carCard = new CarCard(car, this);
+                            flowLayoutPanel_cars.Controls.Add(carCard);
+                        }
                     }
                 }
                 else
                 {
-                    CarCard carCard = new CarCard(car, this);
-                    flowLayoutPanel_cars.Controls.Add(carCard);
+                    if (filterID == 0 || filterID == car.CategoryId)
+                    {
+                        CarCard carCard = new CarCard(car, this);
+                        flowLayoutPanel_cars.Controls.Add(carCard);
+                    }
                 }
             }
         }
@@ -70,17 +80,19 @@ namespace AutoRent
 
         private void button_showAll_Click(object sender, EventArgs e)
         {
+            showingDiscountedOnly = false;
             PopulateCars(false);
         }
 
         private void button_showSale_Click(object sender, EventArgs e)
         {
+            showingDiscountedOnly = true;
             PopulateCars(true);
         }
 
         private void comboBox_category_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            PopulateCars(showingDiscountedOnly);
         }
     }
 }
