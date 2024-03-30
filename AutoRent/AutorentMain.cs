@@ -18,13 +18,21 @@ namespace AutoRent
         AutorentLogin loginForm;
         Connection connection;
 
+        List<Category> categories;
+
         public AutorentMain(AutorentLogin loginForm)
         {
             InitializeComponent();
             connection = new Connection();
-
-            comboBox_category.SelectedIndex = 0;
             this.loginForm = loginForm;
+
+            categories = connection.GetAllCategories();
+            comboBox_category.Items.Add("All");
+            foreach (Category category in categories)
+            {
+                comboBox_category.Items.Add(category.Name);
+            }
+            comboBox_category.SelectedIndex = 0;
 
             PopulateCars(false);
         }
@@ -68,6 +76,11 @@ namespace AutoRent
         private void button_showSale_Click(object sender, EventArgs e)
         {
             PopulateCars(true);
+        }
+
+        private void comboBox_category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

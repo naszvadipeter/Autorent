@@ -98,15 +98,11 @@
             this.comboBox_category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBox_category.FormattingEnabled = true;
-            this.comboBox_category.Items.AddRange(new object[] {
-            "All",
-            "Petrol",
-            "Diesel",
-            "Electric"});
             this.comboBox_category.Location = new System.Drawing.Point(34, 212);
             this.comboBox_category.Name = "comboBox_category";
             this.comboBox_category.Size = new System.Drawing.Size(222, 37);
             this.comboBox_category.TabIndex = 3;
+            this.comboBox_category.SelectedIndexChanged += new System.EventHandler(this.comboBox_category_SelectedIndexChanged);
             // 
             // label_category
             // 
