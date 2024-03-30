@@ -57,7 +57,7 @@ namespace AutoRent.Models
                 List<string> allDates = new List<string>();
                 foreach (Rental r in Rentals)
                     for (DateTime date = r.FromDate; date <= r.ToDate; date = date.AddDays(1))
-                        allDates.Add(date.ToString("yyy.MM.dd"));
+                        allDates.Add(date.ToString("yyy.MM.dd."));
                 return allDates;
             }
         }

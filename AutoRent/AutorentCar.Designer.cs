@@ -207,8 +207,7 @@
             this.textBox_unavailableDays.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_unavailableDays.Size = new System.Drawing.Size(161, 203);
             this.textBox_unavailableDays.TabIndex = 22;
-            this.textBox_unavailableDays.Text = "2024.03.12\r\n2024.03.13\r\n2024.03.14\r\n2024.03.18\r\n2024.03.19\r\n2024.03.20\r\n2024.03.2" +
-    "1\r\n2024.03.23\r\n2024.03.24";
+            this.textBox_unavailableDays.Text = "No results";
             // 
             // label_unavailableDays
             // 

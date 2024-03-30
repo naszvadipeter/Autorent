@@ -36,6 +36,24 @@ namespace AutoRent
                 label_carSaleAmount.Visible = true;
                 label_carPriceOriginal.Font = new Font(label_carPriceOriginal.Font, FontStyle.Strikeout);
             }
+
+            List<string> unavailableDays = car.UnavailableDates;
+            if (unavailableDays.Count > 0)
+            {
+                textBox_unavailableDays.Clear();
+                DateTime today = DateTime.Today;
+                foreach (string day in unavailableDays)
+                {
+                    DateTime date;
+                    if (DateTime.TryParseExact(day, "yyyy.MM.dd.", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out date))
+                    {
+                        if (date >= today)
+                        {
+                            textBox_unavailableDays.Text += day + "\n";
+                        }
+                    }
+                }
+            }
         }
 
         private void button_back_Click(object sender, EventArgs e)
