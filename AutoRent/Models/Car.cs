@@ -49,5 +49,17 @@ namespace AutoRent.Models
         public int RealPrice => this.Sale != null ? (int)Math.Round(1.0 * (DailyPrice * (1 - (1.0 * Sale.Percent / 100))), 0) : DailyPrice;
 
         public List<string> UnavailablePeriods => Rentals.Select(x => $"{x.FromDate.ToString("yyy.MM.dd")} - {x.ToDate.ToString("yyyy.MM.dd")}").ToList();
+
+        public List<string> UnavailableDates
+        {
+            get
+            {
+                List<string> allDates = new List<string>();
+                foreach (Rental r in Rentals)
+                    for (DateTime date = r.FromDate; date <= r.ToDate; date = date.AddDays(1))
+                        allDates.Add(date.ToString("yyy.MM.dd"));
+                return allDates;
+            }
+        }
     }
 }
