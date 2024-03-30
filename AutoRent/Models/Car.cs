@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 
 namespace AutoRent.Models
 {
@@ -46,5 +47,7 @@ namespace AutoRent.Models
         public int? Discount => this.Sale != null ? this.Sale.Percent : 0;
 
         public int RealPrice => this.Sale != null ? (int)Math.Round(1.0 * (DailyPrice * (1 - (1.0 * Sale.Percent / 100))), 0) : DailyPrice;
+
+        public List<string> UnavailablePeriods => Rentals.Select(x => $"{x.FromDate.ToString("yyy.MM.dd")} - {x.ToDate.ToString("yyyy.MM.dd")}").ToList();
     }
 }
