@@ -27,7 +27,7 @@ namespace AutoRent.Models
         // Plus field (for Image) [not in database]
         public byte[] ByteImage { get; set; }
 
-        // Property
+        #region Properties
         public string Name => $"{Brand} {Model}";
 
         public Image CarImage
@@ -61,8 +61,9 @@ namespace AutoRent.Models
                 return allDates;
             }
         }
+        #endregion
 
-        // Methods
+        #region Methods
         public bool IsPeriodAvailable(DateTime fromDate, DateTime toDate)
         {
             List<string> allDates = new List<string>();
@@ -76,5 +77,6 @@ namespace AutoRent.Models
         {
             return IsPeriodAvailable(DateTime.Parse(fromDate), DateTime.Parse(toDate));
         }
+        #endregion
     }
 }
