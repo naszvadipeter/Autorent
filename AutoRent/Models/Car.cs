@@ -64,8 +64,11 @@ namespace AutoRent.Models
         #endregion
 
         #region Methods
-        public bool IsPeriodAvailable(DateTime fromDate, DateTime toDate)
+        public bool IsPeriodAvailable(DateTime date1, DateTime date2)
         {
+            DateTime fromDate = date1 < date2 ? date1 : date2;
+            DateTime toDate = date2 > date1 ? date2 : date1;
+
             List<string> allDates = new List<string>();
             for (DateTime date = fromDate; date <= toDate; date = date.AddDays(1))
                 allDates.Add(date.ToString("yyy.MM.dd"));
@@ -73,9 +76,9 @@ namespace AutoRent.Models
             return !allDates.Any(x => UnavailableDates.Contains(x));
         }
 
-        public bool IsPeriodAvailable(string fromDate, string toDate)
+        public bool IsPeriodAvailable(string date1, string date2)
         {
-            return IsPeriodAvailable(DateTime.Parse(fromDate), DateTime.Parse(toDate));
+            return IsPeriodAvailable(DateTime.Parse(date1), DateTime.Parse(date2));
         }
         #endregion
     }
