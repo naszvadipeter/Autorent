@@ -26,7 +26,7 @@ public partial class AutorentContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=localhost;user=root;database=autorent;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
+        => optionsBuilder.UseMySql(File.ReadLines("autorent.database").First(), ServerVersion.Parse("10.4.32-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
