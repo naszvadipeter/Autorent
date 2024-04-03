@@ -8,9 +8,9 @@
 <br />
 
 ## Dokumentációk:
-### A projekt elnindításának leírása a `00_Documentation / how_to_start.md` fájlban találahtó
-### Az adatbázis exportját a `00_Documentation / autorent.sql` sql dump fájl tartalmazza
-### API dokumentáció: `00_Documentation / api_documentation.md` 
+### A projekt elnindításának leírása: [`00_Documentation / how_to_start.md`](/00_Documentation/how_to_start.md)
+### Adatbázis export (SQL dump): [`00_Documentation / autorent.sql`](/00_Documentation/autorent.sql)
+### API dokumentáció: [`00_Documentation / api_documentation.md`](/00_Documentation/api_documentation.md)
 
 <br />
 
