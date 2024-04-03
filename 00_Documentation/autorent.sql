@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Tábla adatainak mentése autorent.users: ~1 rows (hozzávetőleg)
 INSERT INTO `users` (`id`, `username`, `name`, `password`) VALUES
 	(1, 'mark', 'Márk', '12345'),
-	(2, 'peter', 'Péter', '12345')
+	(2, 'peter', 'Péter', '12345'),
 	(3, 'milan', 'Milán', '12345');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
