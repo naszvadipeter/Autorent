@@ -1,26 +1,33 @@
-# A projekt elindításához szükséges:
+# A projekt elindÃ­tÃ¡sÃ¡hoz szÃ¼ksÃ©ges:
 
-## `.NET 6.0` és `.NET Framework 4.7.2`
+## `.NET 6.0` Ã©s `.NET Framework 4.7.2`
 
-## `MySQL`, verzió: `10.4.32-mariadb` (fejlesztés során XAMPP-ot használtunk) 
+## `MySQL`, verziÃ³: `10.4.32-mariadb` (fejlesztÃ©s sorÃ¡n XAMPP-ot hasznÃ¡ltunk) 
 > [!IMPORTANT]
-> A projekthez tartozó adatbázis importálása (a fájlok közt megtalálható az sql dump: `autorent.sql`) és a programban a lokális adatbázis kapcsolat adatainak megadása
+> A projekthez tartozÃ³ adatbÃ¡zis importÃ¡lÃ¡sa (a fÃ¡jlok kÃ¶zt megtalÃ¡lhatÃ³ az sql dump: `autorent.sql`) Ã©s a programban a lokÃ¡lis adatbÃ¡zis kapcsolat adatainak megadÃ¡sa
 
-## Adatbázis `connection string` megadása
-Az `AutoRentServer` projekten belül az `autorent.database` fájlban kell átírni az adatokat a lokális mysql adatbázis adataira
+## AdatbÃ¡zis `connection string` megadÃ¡sa
+Az `AutoRentServer` projekten belÃ¼l az `autorent.database` fÃ¡jlban kell Ã¡tÃ­rni az adatokat a lokÃ¡lis mysql adatbÃ¡zis adataira
 
-`Default` értékek:
+`Default` Ã©rtÃ©kek:
 - **server:** localhost
 - **user:** root
 - **database:** autorent
 - **port:** 3306
-- **password**: ~~Nincs jelszó~~
+- **password**: ~~Nincs jelszÃ³~~
 
 <br />
 
-# Alkalmazás elindítása
+# AlkalmazÃ¡s elindÃ­tÃ¡sa
 
-### Elõször az `AutoRentServer` projektet kell elíndítani
-### Ezután az `AutoRent` projekt is elindítható, amely kapcsolódik a szerverhez
-A kapcsolódás legelõször a `Login` gomb megnyomásakor indul el
+### ElÅ‘szÃ¶r az `AutoRentServer` projektet kell elÃ­ndÃ­tani
+### EzutÃ¡n az `AutoRent` projekt is elindÃ­thatÃ³, amely kapcsolÃ³dik a szerverhez
+A kapcsolÃ³dÃ¡s legelÅ‘szÃ¶r a `Login` gomb megnyomÃ¡sakor indul el
+
+# Teszt adatok
+
+### Teszt felhasznÃ¡lÃ³
+A bejelentkezÃ©shez hasznÃ¡lhatÃ³ `Test` felhasznÃ¡lÃ³ adatai:
+- **Username:** `test`
+- **Password:** `12345`
 
