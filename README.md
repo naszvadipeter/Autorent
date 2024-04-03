@@ -27,7 +27,7 @@
 - [x] Autók listázása
 - [x] Szűrés kategóriák szerint
 - [ ] Autók kölcsönzése
-- [ ] Foglalások megtekintése
+- [ ] Kölcsönzések megtekintése
 
 ### Mérföldkövek
 - [x] Szerver - kliens kommunikáció
