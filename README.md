@@ -3,6 +3,7 @@
 
 ### Kliens: `Widows Forms App (C#)`
 ### Szerver: `ASP.NET Core Web API (C#)`
+### Adatbázis: `MySQL`
 
 <br />
 
@@ -16,3 +17,19 @@
 ### `Pomelo.EntityFrameworkCore.MySql`
 ### `Microsoft.EntityFrameworkCore.Tools`
 ### `Newtonsoft.Json`
+
+<br />
+
+# Elkészült / hátralévő funkciók
+### Funkciók
+- [x] Bejelentkezés
+- [x] Autók listázása
+- [x] Szűrés kategóriák szerint
+- [ ] Autók kölcsönzése
+- [ ] Foglalások megtekintése
+
+### Mérföldkövek
+- [x] Szerver - kliens kommunikáció
+- [x] Adatbázis kapcsolat
+- [ ] Authentikáció - Authorizáció
+- [ ] WebSocket
