@@ -157,6 +157,10 @@ public partial class AutorentContext : DbContext
             entity.Property(e => e.Username)
                 .HasMaxLength(255)
                 .HasColumnName("username");
+            entity.Property(e => e.Role)
+                .HasMaxLength(50)
+                .HasDefaultValueSql("'user'")
+                .HasColumnName("role");
         });
 
         OnModelCreatingPartial(modelBuilder);
