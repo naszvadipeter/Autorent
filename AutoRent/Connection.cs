@@ -13,7 +13,10 @@ namespace AutoRent
 {
     internal class Connection
     {
-        public const string URL = "https://localhost:7253";
+        public const string URL = "http://localhost:5240";
+
+        private static string BearerToken = null;
+        public static User User = null;
 
         public Connection() { }
 
@@ -22,9 +25,14 @@ namespace AutoRent
             using (var client = new WebClient())
             {
                 var dataString = JsonConvert.SerializeObject(new { username = username, password = password });
-                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                string response = client.UploadString(new Uri($"{URL}/login"), "POST", dataString);
-                return ToNullableInt(response);
+                client.Headers.Add(HttpRequestHeader.ContentType, "" + "application/json");
+                string response = client.UploadString(new Uri($"{URL}/login"), "POST", dataString);     
+
+                var result = JsonConvert.DeserializeAnonymousType(response, new { Token = "", User = new User() });
+                BearerToken = result.Token;
+                User = result.User;
+
+                return User.Id;
             }
         }
 
@@ -32,6 +40,7 @@ namespace AutoRent
         {
             using (var wb = new WebClient())
             {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 var response = wb.DownloadString($"{URL}/getUser?id={userId}");
 
                 User user = JsonConvert.DeserializeObject<User>(response);
@@ -44,6 +53,7 @@ namespace AutoRent
         {
             using (var wb = new WebClient())
             {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 var response = wb.DownloadString($"{URL}/getAllCars");
                 List<Car> carsList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Car>>(response);
                 return carsList;
@@ -54,6 +64,7 @@ namespace AutoRent
         {
             using (var wb = new WebClient())
             {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 var response = wb.DownloadString($"{URL}/getCarImage?carId={carId}");
                 byte[] imageBytes = JsonConvert.DeserializeObject<byte[]>(response);
 
@@ -76,20 +87,11 @@ namespace AutoRent
         {
             using (var wb = new WebClient())
             {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 var response = wb.DownloadString($"{URL}/getAllCategories");
                 List<Category> categoryList = JsonConvert.DeserializeObject<List<Category>>(response);
                 return categoryList;
             }
         }
-
-        #region Extra methods
-        public static int? ToNullableInt(string s)
-        {
-            int i;
-            if (int.TryParse(s, out i)) 
-                return i;
-            return null;
-        }
-        #endregion
     }
 }
