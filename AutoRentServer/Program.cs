@@ -44,7 +44,12 @@ app.MapPost("/login", (LoginUser login) =>
     AutorentContext _autorent = new AutorentContext();
     User? user = _autorent.Users.FirstOrDefault(x => x.Username.Equals(login.username) && x.Password.Equals(login.password));
 
-    return Results.Json(user?.Id);
+    if (user == null)
+        return Results.NotFound("User not found!");
+
+    user.Password = string.Empty;
+    string token = new AuthHelper(builder).GenerateJtwBearer(user);
+    return Results.Ok(new { Token = token, User = user});
 });
 
 // GetUser
