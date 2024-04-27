@@ -57,9 +57,9 @@ app.MapGet("/getUser", (int id) =>
 {
     AutorentContext _autorent = new AutorentContext();
     User? user = _autorent.Users.FirstOrDefault(x => x.Id == id);
-
+    
     return JsonConvert.SerializeObject(user, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-});
+}).RequireAuthorization("admin");
 
 // GetAllCars
 app.MapGet("/getAllCars", () =>
@@ -80,7 +80,7 @@ app.MapGet("/getAllCars", () =>
     }).ToList();
 
     return JsonConvert.SerializeObject(cars, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-});
+}).RequireAuthorization();
 
 // GetCarImage
 app.MapGet("/getCarImage", (int carId) =>
@@ -88,7 +88,7 @@ app.MapGet("/getCarImage", (int carId) =>
     byte[]? imageBytes = File.Exists($"img/{carId}.jpg") ? File.ReadAllBytes($"img/{carId}.jpg") : null;
 
     return JsonConvert.SerializeObject(imageBytes, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-});
+}).RequireAuthorization();
 
 // GetAllCategories
 app.MapGet("/getAllCategories", () =>
@@ -98,7 +98,7 @@ app.MapGet("/getAllCategories", () =>
     List<Category> categories = _autorent.Categories.ToList();
 
     return JsonConvert.SerializeObject(categories, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
-});
+}).RequireAuthorization();
 
 app.Run();
 
