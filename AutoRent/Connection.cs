@@ -15,6 +15,9 @@ namespace AutoRent
     {
         public const string URL = "http://localhost:5240";
 
+        private static string BearerToken = null;
+        public static User User = null;
+
         public Connection() { }
 
         public int? Login(string username, string password)
