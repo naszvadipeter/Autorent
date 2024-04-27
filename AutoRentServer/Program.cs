@@ -1,11 +1,42 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using AutoRentServer.Auth;
 using AutoRentServer.Models.Autorent;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
+// Authentication
+builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
+{
+    var key = builder.Configuration["Authentication:Schemes:Bearer:SigningKeys:0:Value"];
+
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["Authentication:Schemes:Bearer:ValidIssuer"],
+        ValidateAudience = true,
+        ValidAudiences = builder.Configuration.GetSection("Authentication:Schemes:Bearer:ValidAudiences").Get<List<string>>(),
+        ValidateLifetime = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key ?? throw new InvalidOperationException("Signing Key not found."))),
+        ValidateIssuerSigningKey = true
+    };
+});
+
+// Authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("user", policy => policy.RequireRole("user"));
+    options.AddPolicy("admin", policy => policy.RequireRole("admin"));
+});
 
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
 // LogIn
 app.MapPost("/login", (LoginUser login) =>
