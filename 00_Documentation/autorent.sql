@@ -105,15 +105,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `role` varchar(50) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- Tábla adatainak mentése autorent.users: ~1 rows (hozzávetőleg)
-INSERT INTO `users` (`id`, `username`, `name`, `password`) VALUES
-	(1, 'mark', 'Márk', '12345'),
-	(2, 'peter', 'Péter', '12345'),
-	(3, 'milan', 'Milán', '12345'),
-	(4, 'test', 'Test', '12345');
+INSERT INTO `users` (`id`, `username`, `name`, `password`, `role`) VALUES
+	(1, 'mark', 'Márk', '12345', 'user'),
+	(2, 'peter', 'Péter', '12345', 'user'),
+	(3, 'milan', 'Milán', '12345', 'user'),
+	(4, 'test', 'Test', '12345', 'user'),
+	(5, 'admin', 'Admin', 'admin', 'admin');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
