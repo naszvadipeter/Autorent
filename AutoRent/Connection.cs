@@ -25,9 +25,14 @@ namespace AutoRent
             using (var client = new WebClient())
             {
                 var dataString = JsonConvert.SerializeObject(new { username = username, password = password });
-                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                client.Headers.Add(HttpRequestHeader.ContentType, "" + "application/json");
                 string response = client.UploadString(new Uri($"{URL}/login"), "POST", dataString);
-                return ToNullableInt(response);
+
+                var result = JsonConvert.DeserializeAnonymousType(response, new { Token = "", User = new User() });
+                BearerToken = result.Token;
+                User = result.User;
+
+                return User.Id;
             }
         }
 
@@ -84,15 +89,5 @@ namespace AutoRent
                 return categoryList;
             }
         }
-
-        #region Extra methods
-        public static int? ToNullableInt(string s)
-        {
-            int i;
-            if (int.TryParse(s, out i)) 
-                return i;
-            return null;
-        }
-        #endregion
     }
 }
