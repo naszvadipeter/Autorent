@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AutoRentServer.Auth;
+using AutoRentServer.Models;
 using AutoRentServer.Models.Autorent;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
@@ -100,13 +101,3 @@ app.MapGet("/getAllCategories", () =>
 }).RequireAuthorization();
 
 app.Run();
-
-#region Extra classes
-
-public class LoginUser
-{
-    public string username { get; set; }
-    public string password { get; set; }
-}
-
-#endregion
