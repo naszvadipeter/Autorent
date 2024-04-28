@@ -26,6 +26,7 @@ namespace AutoRent
             {
                 var dataString = JsonConvert.SerializeObject(new { username = username, password = password });
                 client.Headers.Add(HttpRequestHeader.ContentType, "" + "application/json");
+                client.Encoding = Encoding.UTF8;
                 string response = client.UploadString(new Uri($"{URL}/login"), "POST", dataString);     
 
                 var result = JsonConvert.DeserializeAnonymousType(response, new { Token = "", User = new User() });
@@ -41,6 +42,7 @@ namespace AutoRent
             using (var wb = new WebClient())
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
                 var response = wb.DownloadString($"{URL}/getUser?id={userId}");
 
                 User user = JsonConvert.DeserializeObject<User>(response);
@@ -54,6 +56,7 @@ namespace AutoRent
             using (var wb = new WebClient())
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
                 var response = wb.DownloadString($"{URL}/getAllCars");
                 List<Car> carsList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Car>>(response);
                 return carsList;
@@ -65,6 +68,7 @@ namespace AutoRent
             using (var wb = new WebClient())
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
                 var response = wb.DownloadString($"{URL}/getCarImage?carId={carId}");
                 byte[] imageBytes = JsonConvert.DeserializeObject<byte[]>(response);
 
@@ -88,6 +92,7 @@ namespace AutoRent
             using (var wb = new WebClient())
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
                 var response = wb.DownloadString($"{URL}/getAllCategories");
                 List<Category> categoryList = JsonConvert.DeserializeObject<List<Category>>(response);
                 return categoryList;
