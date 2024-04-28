@@ -109,4 +109,23 @@ app.MapGet("/getAllCategories", () =>
     return JsonConvert.SerializeObject(categories, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }); ;
 }).RequireAuthorization();
 
+// Add New Rental
+app.MapPost("/addRental", (Rental rental) =>
+{
+    // Data check (DATE)
+    if(rental.ToDate < rental.FromDate)
+        return Results.Problem("ERROR");
+ 
+    rental.Created = DateTime.Now;
+    
+    AutorentContext _autorent = new AutorentContext();
+    _autorent.Rentals.Add(rental);
+    int n = _autorent.SaveChanges();
+
+    if (n == 0)
+        return Results.Problem("ERROR");
+    else
+        return Results.Ok("OK");
+}).RequireAuthorization("user");
+
 app.Run();
