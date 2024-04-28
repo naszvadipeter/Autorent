@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Authentication
 builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
 {
-    var key = builder.Configuration["Authentication:Schemes:Bearer:SigningKeys:0:Value"];
+    var key = builder.Configuration["Authentication:Schemes:Bearer:SigningKeys:0"];
 
     options.TokenValidationParameters = new TokenValidationParameters
     {

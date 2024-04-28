@@ -18,7 +18,7 @@ public class AuthHelper
     
     public string GenerateJtwBearer(User user)
     {
-        string k = builder.Configuration["Authentication:Schemes:Bearer:SigningKeys:0:Value"];
+        string k = builder.Configuration["Authentication:Schemes:Bearer:SigningKeys:0"];
         Byte[] key = Encoding.UTF8.GetBytes(k);
         SymmetricSecurityKey skey = new SymmetricSecurityKey(key);
         SigningCredentials SignedCredential = new SigningCredentials(skey, SecurityAlgorithms.HmacSha256Signature);
