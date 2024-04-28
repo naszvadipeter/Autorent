@@ -112,5 +112,19 @@ namespace AutoRent
                 return categoryList;
             }
         }
+
+        public bool AddRental(int UserId, int CarId, string FromDate, string ToDate)
+        {
+            using (var client = new WebClient())
+            {
+                client.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                var dataString = JsonConvert.SerializeObject(new { UserId, CarId, FromDate, ToDate });
+                client.Headers.Add(HttpRequestHeader.ContentType, "" + "application/json");
+                client.Encoding = Encoding.UTF8;
+                string response = client.UploadString(new Uri($"{URL}/addRental"), "POST", dataString);
+
+                return response.Equals("\"OK\"");
+            }
+        }
     }
 }
