@@ -61,6 +61,15 @@ app.MapGet("/getUser", (int id) =>
     return JsonConvert.SerializeObject(user, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 }).RequireAuthorization("admin");
 
+// GetAllUsers
+app.MapGet("/getAllUsers", () =>
+{
+    AutorentContext _autorent = new AutorentContext();
+    List<User> users = _autorent.Users.ToList();
+    
+    return JsonConvert.SerializeObject(users, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+}).RequireAuthorization("admin");
+
 // GetAllCars
 app.MapGet("/getAllCars", () =>
 {
