@@ -51,6 +51,20 @@ namespace AutoRent
             }
         }
 
+        public List<User> GetAllUsers()
+        {
+            using (var wb = new WebClient())
+            {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
+                var response = wb.DownloadString($"{URL}/getAllUsers");
+
+                List<User> users = JsonConvert.DeserializeObject<List<User>>(response);
+
+                return users;
+            }
+        }
+
         public List<Car> GetAllCars()
         {
             using (var wb = new WebClient())

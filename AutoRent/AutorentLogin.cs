@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoRent.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,13 +28,22 @@ namespace AutoRent
             }
             User loginResult=con.Login(textBox_username.Text,textBox_password.Text);
             if(loginResult != null)
-            { 
-            // This will happen if login was successful :
-            AutorentMain mainForm = new AutorentMain(this);
+            {
+                // This will happen if login was successful :
+                if (loginResult.Role.Equals("user"))
+                {
                     AutorentMain mainForm = new AutorentMain(loginResult);
-            this.Hide();
-            mainForm.Show();
-            mainForm.FormClosed += AutorentMain_FormClosed;
+                    this.Hide();
+                    mainForm.Show();
+                    mainForm.FormClosed += AutorentMain_FormClosed;
+                }
+                else if (loginResult.Role.Equals("admin"))
+                {
+                    AutorentAdmin adminForm = new AutorentAdmin(loginResult);
+                    this.Hide();
+                    adminForm.Show();
+                    adminForm.FormClosed += AutorentMain_FormClosed;
+                }
             }
             else
             {
