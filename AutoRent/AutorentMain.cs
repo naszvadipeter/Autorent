@@ -15,17 +15,17 @@ namespace AutoRent
 {
     public partial class AutorentMain : Form
     {
-        AutorentLogin loginForm;
+        User user;
         Connection connection;
 
         bool showingDiscountedOnly;
         List<Category> categories;
 
-        public AutorentMain(AutorentLogin loginForm)
+        public AutorentMain(User loggedInUser)
         {
             InitializeComponent();
             connection = new Connection();
-            this.loginForm = loginForm;
+            this.user = loggedInUser;
             showingDiscountedOnly = false;
 
             categories = connection.GetAllCategories();

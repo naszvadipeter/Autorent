@@ -20,7 +20,7 @@ namespace AutoRent
 
         public Connection() { }
 
-        public int? Login(string username, string password)
+        public User Login(string username, string password)
         {
             using (var client = new WebClient())
             {
@@ -33,7 +33,7 @@ namespace AutoRent
                 BearerToken = result.Token;
                 User = result.User;
 
-                return User.Id;
+                return result.User;
             }
         }
 

@@ -25,11 +25,12 @@ namespace AutoRent
                 MessageBox.Show("All fields are required!");
                 return;
             }
-            int? loginResult=con.Login(textBox_username.Text,textBox_password.Text);
-            if(loginResult!=null)
+            User loginResult=con.Login(textBox_username.Text,textBox_password.Text);
+            if(loginResult != null)
             { 
             // This will happen if login was successful :
             AutorentMain mainForm = new AutorentMain(this);
+                    AutorentMain mainForm = new AutorentMain(loginResult);
             this.Hide();
             mainForm.Show();
             mainForm.FormClosed += AutorentMain_FormClosed;
