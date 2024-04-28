@@ -13,6 +13,8 @@ namespace AutoRent.Models
 
         public string Password { get; set; }
 
+        public string Role { get; set; }
+
         public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
     }
 }
