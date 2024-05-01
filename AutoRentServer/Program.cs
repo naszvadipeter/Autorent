@@ -113,9 +113,9 @@ app.MapGet("/getAllCategories", () =>
 app.MapPost("/addRental", (Rental rental) =>
 {
     // Data check (DATE)
-    if(rental.ToDate < rental.FromDate)
-        return Results.Problem("ERROR");
- 
+    if(rental.ToDate < rental.FromDate || new AutorentContext().Rentals.Where(x => x.CarId == rental.CarId).Any(x => (x.FromDate <= rental.FromDate && x.ToDate >= rental.FromDate) || (x.FromDate <= rental.ToDate && x.ToDate >= rental.ToDate)))
+        return Results.Ok("ERROR");
+
     rental.Created = DateTime.Now;
     
     AutorentContext _autorent = new AutorentContext();
@@ -123,7 +123,7 @@ app.MapPost("/addRental", (Rental rental) =>
     int n = _autorent.SaveChanges();
 
     if (n == 0)
-        return Results.Problem("ERROR");
+        return Results.Ok("ERROR");
     else
         return Results.Ok("OK");
 }).RequireAuthorization("user");
