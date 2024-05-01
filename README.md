@@ -28,7 +28,7 @@
 - [x] Bejelentkezés
 - [x] Autók listázása
 - [x] Szűrés kategóriák szerint
-- [ ] Autók kölcsönzése
+- [x] Autók kölcsönzése (kliens oldalon a foglalási adatok csak újboli bejelentkezés után frissülnek, később ez javítva lesz)
 - [ ] Kölcsönzések megtekintése
 
 ### Mérföldkövek
