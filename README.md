@@ -11,6 +11,7 @@
 ### A projekt elnindításának leírása: [`00_Documentation / how_to_start.md`](/00_Documentation/how_to_start.md)
 ### Adatbázis export (SQL dump): [`00_Documentation / autorent.sql`](/00_Documentation/autorent.sql)
 ### API dokumentáció: [`00_Documentation / api_documentation.md`](/00_Documentation/api_documentation.md)
+### Authentication és Authorization dokumentáció: [`00_Documentation / auth_documentation.md`](/00_Documentation/auth_documentation.md)
 
 <br />
 
@@ -18,6 +19,7 @@
 ### `Pomelo.EntityFrameworkCore.MySql`
 ### `Microsoft.EntityFrameworkCore.Tools`
 ### `Newtonsoft.Json`
+### `Microsoft.AspNetCore.Authentication.JwtBearer`
 
 <br />
 
@@ -32,5 +34,5 @@
 ### Mérföldkövek
 - [x] Szerver - kliens kommunikáció
 - [x] Adatbázis kapcsolat
-- [ ] Authentikáció - Authorizáció
+- [x] Authentikáció - Authorizáció
 - [ ] WebSocket
