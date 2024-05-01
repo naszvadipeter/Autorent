@@ -61,5 +61,29 @@ namespace AutoRent
             mainForm.Show();
             this.Close();
         }
+
+        private void button_reserve_Click(object sender, EventArgs e)
+        {
+            var fromDate = monthCalendar_date.SelectionRange.Start;
+            var toDate = monthCalendar_date.SelectionRange.End;
+
+            if (fromDate == null) // Check selection
+                MessageBox.Show("No date selected!");
+            else if(fromDate > toDate || toDate.Subtract(fromDate).Days > 7 || fromDate < DateTime.Now) // Check start and end date
+                MessageBox.Show("Incorrect selected date!");
+            else if(car.Rentals.Any(x => (x.FromDate <= fromDate && x.ToDate >= fromDate) || (x.FromDate <= toDate && x.ToDate >= toDate))) // Check unavailable days
+                MessageBox.Show("Selected date(s) unavailable!");
+            else
+            {
+                bool result = new Connection().AddRental(Connection.User.Id, car.Id, fromDate.ToString("yyyy-MM-dd"), toDate.ToString("yyyy-MM-dd"));
+                if (result)
+                {
+                    MessageBox.Show($"Car rented successfully!");
+                    button_back_Click(null, null); // Back to main
+                }
+                else
+                    MessageBox.Show($"Car rent failed!");
+            }
+        }
     }
 }
