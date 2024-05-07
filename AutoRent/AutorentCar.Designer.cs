@@ -49,20 +49,19 @@
             // 
             // monthCalendar_date
             // 
-            this.monthCalendar_date.Location = new System.Drawing.Point(321, 95);
-            this.monthCalendar_date.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.monthCalendar_date.Location = new System.Drawing.Point(482, 146);
             this.monthCalendar_date.Name = "monthCalendar_date";
             this.monthCalendar_date.TabIndex = 0;
+            this.monthCalendar_date.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_date_DateChanged);
             // 
             // button_back
             // 
             this.button_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.button_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_back.ForeColor = System.Drawing.Color.Black;
-            this.button_back.Location = new System.Drawing.Point(625, 14);
-            this.button_back.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_back.Location = new System.Drawing.Point(938, 22);
             this.button_back.Name = "button_back";
-            this.button_back.Size = new System.Drawing.Size(89, 41);
+            this.button_back.Size = new System.Drawing.Size(134, 63);
             this.button_back.TabIndex = 5;
             this.button_back.Text = "Back";
             this.button_back.UseVisualStyleBackColor = false;
@@ -72,10 +71,9 @@
             // 
             this.pictureBox_carImage.BackColor = System.Drawing.Color.White;
             this.pictureBox_carImage.Image = global::AutoRent.Properties.Resources.car;
-            this.pictureBox_carImage.Location = new System.Drawing.Point(43, 42);
-            this.pictureBox_carImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox_carImage.Location = new System.Drawing.Point(64, 65);
             this.pictureBox_carImage.Name = "pictureBox_carImage";
-            this.pictureBox_carImage.Size = new System.Drawing.Size(195, 118);
+            this.pictureBox_carImage.Size = new System.Drawing.Size(292, 182);
             this.pictureBox_carImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_carImage.TabIndex = 8;
             this.pictureBox_carImage.TabStop = false;
@@ -83,10 +81,9 @@
             // panel_imageBackground
             // 
             this.panel_imageBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(89)))), ((int)(((byte)(78)))));
-            this.panel_imageBackground.Location = new System.Drawing.Point(23, 23);
-            this.panel_imageBackground.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_imageBackground.Location = new System.Drawing.Point(34, 35);
             this.panel_imageBackground.Name = "panel_imageBackground";
-            this.panel_imageBackground.Size = new System.Drawing.Size(238, 155);
+            this.panel_imageBackground.Size = new System.Drawing.Size(357, 238);
             this.panel_imageBackground.TabIndex = 7;
             // 
             // label_carSaleAmount
@@ -94,10 +91,9 @@
             this.label_carSaleAmount.AutoSize = true;
             this.label_carSaleAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.label_carSaleAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carSaleAmount.Location = new System.Drawing.Point(187, 265);
-            this.label_carSaleAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_carSaleAmount.Location = new System.Drawing.Point(280, 408);
             this.label_carSaleAmount.Name = "label_carSaleAmount";
-            this.label_carSaleAmount.Size = new System.Drawing.Size(50, 20);
+            this.label_carSaleAmount.Size = new System.Drawing.Size(73, 29);
             this.label_carSaleAmount.TabIndex = 13;
             this.label_carSaleAmount.Text = "-15%";
             this.label_carSaleAmount.Visible = false;
@@ -108,10 +104,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_carPriceSale.AutoSize = true;
             this.label_carPriceSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carPriceSale.Location = new System.Drawing.Point(170, 290);
-            this.label_carPriceSale.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_carPriceSale.Location = new System.Drawing.Point(255, 446);
             this.label_carPriceSale.Name = "label_carPriceSale";
-            this.label_carPriceSale.Size = new System.Drawing.Size(89, 20);
+            this.label_carPriceSale.Size = new System.Drawing.Size(132, 29);
             this.label_carPriceSale.TabIndex = 12;
             this.label_carPriceSale.Text = "Sale price";
             this.label_carPriceSale.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -121,10 +116,9 @@
             // 
             this.label_carPriceOriginal.AutoSize = true;
             this.label_carPriceOriginal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carPriceOriginal.Location = new System.Drawing.Point(40, 290);
-            this.label_carPriceOriginal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_carPriceOriginal.Location = new System.Drawing.Point(60, 446);
             this.label_carPriceOriginal.Name = "label_carPriceOriginal";
-            this.label_carPriceOriginal.Size = new System.Drawing.Size(114, 20);
+            this.label_carPriceOriginal.Size = new System.Drawing.Size(172, 29);
             this.label_carPriceOriginal.TabIndex = 11;
             this.label_carPriceOriginal.Text = "Original price";
             // 
@@ -132,10 +126,9 @@
             // 
             this.label_carCategory.AutoSize = true;
             this.label_carCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carCategory.Location = new System.Drawing.Point(40, 219);
-            this.label_carCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_carCategory.Location = new System.Drawing.Point(60, 337);
             this.label_carCategory.Name = "label_carCategory";
-            this.label_carCategory.Size = new System.Drawing.Size(65, 17);
+            this.label_carCategory.Size = new System.Drawing.Size(92, 25);
             this.label_carCategory.TabIndex = 10;
             this.label_carCategory.Text = "Category";
             // 
@@ -143,10 +136,9 @@
             // 
             this.label_carName.AutoSize = true;
             this.label_carName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carName.Location = new System.Drawing.Point(40, 194);
-            this.label_carName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_carName.Location = new System.Drawing.Point(60, 298);
             this.label_carName.Name = "label_carName";
-            this.label_carName.Size = new System.Drawing.Size(156, 20);
+            this.label_carName.Size = new System.Drawing.Size(230, 29);
             this.label_carName.TabIndex = 9;
             this.label_carName.Text = "Car brand + model";
             // 
@@ -155,10 +147,9 @@
             this.button_reserve.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(89)))), ((int)(((byte)(78)))));
             this.button_reserve.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_reserve.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
-            this.button_reserve.Location = new System.Drawing.Point(463, 282);
-            this.button_reserve.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_reserve.Location = new System.Drawing.Point(694, 434);
             this.button_reserve.Name = "button_reserve";
-            this.button_reserve.Size = new System.Drawing.Size(209, 46);
+            this.button_reserve.Size = new System.Drawing.Size(314, 71);
             this.button_reserve.TabIndex = 14;
             this.button_reserve.Text = "Make reservation";
             this.button_reserve.UseVisualStyleBackColor = false;
@@ -168,10 +159,9 @@
             // 
             this.label_dailyPrice.AutoSize = true;
             this.label_dailyPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_dailyPrice.Location = new System.Drawing.Point(40, 265);
-            this.label_dailyPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_dailyPrice.Location = new System.Drawing.Point(60, 408);
             this.label_dailyPrice.Name = "label_dailyPrice";
-            this.label_dailyPrice.Size = new System.Drawing.Size(81, 20);
+            this.label_dailyPrice.Size = new System.Drawing.Size(126, 29);
             this.label_dailyPrice.TabIndex = 17;
             this.label_dailyPrice.Text = "Daily price";
             // 
@@ -179,10 +169,9 @@
             // 
             this.label_totalPrice.AutoSize = true;
             this.label_totalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_totalPrice.Location = new System.Drawing.Point(318, 280);
-            this.label_totalPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_totalPrice.Location = new System.Drawing.Point(477, 431);
             this.label_totalPrice.Name = "label_totalPrice";
-            this.label_totalPrice.Size = new System.Drawing.Size(82, 20);
+            this.label_totalPrice.Size = new System.Drawing.Size(128, 29);
             this.label_totalPrice.TabIndex = 18;
             this.label_totalPrice.Text = "Total price";
             // 
@@ -190,23 +179,21 @@
             // 
             this.label_carTotalPrice.AutoSize = true;
             this.label_carTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_carTotalPrice.Location = new System.Drawing.Point(318, 309);
-            this.label_carTotalPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_carTotalPrice.Location = new System.Drawing.Point(477, 475);
             this.label_carTotalPrice.Name = "label_carTotalPrice";
-            this.label_carTotalPrice.Size = new System.Drawing.Size(93, 20);
+            this.label_carTotalPrice.Size = new System.Drawing.Size(57, 29);
             this.label_carTotalPrice.TabIndex = 19;
-            this.label_carTotalPrice.Text = "Total price";
+            this.label_carTotalPrice.Text = "0 Ft";
             // 
             // textBox_info
             // 
             this.textBox_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
             this.textBox_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox_info.Location = new System.Drawing.Point(277, 23);
-            this.textBox_info.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_info.Location = new System.Drawing.Point(416, 35);
             this.textBox_info.Multiline = true;
             this.textBox_info.Name = "textBox_info";
-            this.textBox_info.Size = new System.Drawing.Size(331, 57);
+            this.textBox_info.Size = new System.Drawing.Size(496, 88);
             this.textBox_info.TabIndex = 21;
             this.textBox_info.Text = "To reserve the car, select the desired days. You can only select continuous days " +
     "up to a maximum of 7. Avoid unavailable days.";
@@ -216,12 +203,11 @@
             this.textBox_unavailableDays.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
             this.textBox_unavailableDays.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_unavailableDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox_unavailableDays.Location = new System.Drawing.Point(550, 127);
-            this.textBox_unavailableDays.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_unavailableDays.Location = new System.Drawing.Point(825, 195);
             this.textBox_unavailableDays.Multiline = true;
             this.textBox_unavailableDays.Name = "textBox_unavailableDays";
             this.textBox_unavailableDays.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_unavailableDays.Size = new System.Drawing.Size(107, 132);
+            this.textBox_unavailableDays.Size = new System.Drawing.Size(160, 203);
             this.textBox_unavailableDays.TabIndex = 22;
             this.textBox_unavailableDays.Text = "No results";
             // 
@@ -229,19 +215,18 @@
             // 
             this.label_unavailableDays.AutoSize = true;
             this.label_unavailableDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_unavailableDays.Location = new System.Drawing.Point(535, 95);
-            this.label_unavailableDays.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_unavailableDays.Location = new System.Drawing.Point(802, 146);
             this.label_unavailableDays.Name = "label_unavailableDays";
-            this.label_unavailableDays.Size = new System.Drawing.Size(128, 20);
+            this.label_unavailableDays.Size = new System.Drawing.Size(195, 29);
             this.label_unavailableDays.TabIndex = 23;
             this.label_unavailableDays.Text = "Unavailable days";
             // 
             // AutorentCar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
-            this.ClientSize = new System.Drawing.Size(728, 354);
+            this.ClientSize = new System.Drawing.Size(1092, 545);
             this.Controls.Add(this.label_unavailableDays);
             this.Controls.Add(this.textBox_unavailableDays);
             this.Controls.Add(this.textBox_info);
@@ -258,7 +243,6 @@
             this.Controls.Add(this.panel_imageBackground);
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.monthCalendar_date);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AutorentCar";
             this.Text = "AutorentCar";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carImage)).EndInit();

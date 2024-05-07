@@ -85,5 +85,11 @@ namespace AutoRent
                     MessageBox.Show($"Car rent failed!");
             }
         }
+
+        private void monthCalendar_date_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            int daysSelected = (e.End - e.Start).Days + 1;
+            label_carTotalPrice.Text = daysSelected * car.RealPrice + " Ft";
+        }
     }
 }
