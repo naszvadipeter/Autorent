@@ -4,6 +4,8 @@ using System.Text;
 using AutoRentServer.Auth;
 using AutoRentServer.Models;
 using AutoRentServer.Models.Autorent;
+using AutoRentServer.WebSocket;
+using AutoRentServer.WebSocket.Handlers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -32,6 +34,9 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("user", policy => policy.RequireRole("user"));
     options.AddPolicy("admin", policy => policy.RequireRole("admin"));
 });
+
+// WEBSOCKET
+builder.Services.AddWebSocketManager();
 
 var app = builder.Build();
 
@@ -127,5 +132,11 @@ app.MapPost("/addRental", (Rental rental) =>
     else
         return Results.Ok("OK");
 }).RequireAuthorization("user");
+
+// WEBSOCKET
+var serviceScopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+var serviceProvider = serviceScopeFactory.CreateScope().ServiceProvider;
+app.UseWebSockets();
+app.MapWebSocketManager("/ws/users", serviceProvider.GetService<UserHandler>());
 
 app.Run();
