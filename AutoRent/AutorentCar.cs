@@ -71,7 +71,7 @@ namespace AutoRent
                 MessageBox.Show("No date selected!");
             else if(fromDate > toDate || toDate.Subtract(fromDate).Days > 7 || fromDate < DateTime.Now) // Check start and end date
                 MessageBox.Show("Incorrect selected date!");
-            else if(car.Rentals.Any(x => (x.FromDate <= fromDate && x.ToDate >= fromDate) || (x.FromDate <= toDate && x.ToDate >= toDate))) // Check unavailable days
+            else if(car.Rentals.Any(x => (x.FromDate <= fromDate && x.ToDate >= fromDate) || (x.FromDate <= toDate && x.ToDate >= fromDate))) // Check unavailable days
                 MessageBox.Show("Selected date(s) unavailable!");
             else
             {

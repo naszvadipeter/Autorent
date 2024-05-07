@@ -118,7 +118,7 @@ app.MapGet("/getAllCategories", () =>
 app.MapPost("/addRental", (Rental rental) =>
 {
     // Data check (DATE)
-    if(rental.ToDate < rental.FromDate || new AutorentContext().Rentals.Where(x => x.CarId == rental.CarId).Any(x => (x.FromDate <= rental.FromDate && x.ToDate >= rental.FromDate) || (x.FromDate <= rental.ToDate && x.ToDate >= rental.ToDate)))
+    if(rental.ToDate < rental.FromDate || new AutorentContext().Rentals.Where(x => x.CarId == rental.CarId).Any(x => (x.FromDate <= rental.FromDate && x.ToDate >= rental.FromDate) || (x.FromDate <= rental.ToDate && x.ToDate >= rental.FromDate)))
         return Results.Ok("ERROR");
 
     rental.Created = DateTime.Now;
