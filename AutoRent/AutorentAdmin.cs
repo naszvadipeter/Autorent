@@ -34,7 +34,7 @@ namespace AutoRent
         private async void button_addNewUser_Click(object sender, EventArgs e)
         {
             // Get data from inputs
-            string username = textBox_name.Text;
+            string username = textBox_username.Text;
             string password = textBox_password.Text;
             string name = textBox_name.Text;
             string role = comboBox_role.SelectedItem?.ToString() ?? null;
