@@ -133,12 +133,6 @@ app.MapPost("/addRental", (Rental rental) =>
         return Results.Ok("OK");
 }).RequireAuthorization("user");
 
-// WEBSOCKET
-var serviceScopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
-var serviceProvider = serviceScopeFactory.CreateScope().ServiceProvider;
-app.UseWebSockets();
-app.MapWebSocketManager("/ws/users", serviceProvider.GetService<UserHandler>());
-
 // GetRentals
 app.MapGet("/getRentals", (int userID) =>
 {
@@ -155,26 +149,10 @@ app.MapGet("/getRentals", (int userID) =>
     return JsonConvert.SerializeObject(rentals, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 }).RequireAuthorization("user");
 
-//// GetCar
-//app.MapGet("/getCar", (int carID) =>
-//{
-//    AutorentContext _autorent = new AutorentContext();
-//    _autorent.Categories.ToList();
-
-//    var car = _autorent.Cars.FirstOrDefault(x => x.Id == carID);
-
-//    return JsonConvert.SerializeObject(car, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-//}).RequireAuthorization("user");
-
-//// GetSale
-//app.MapGet("/getSale", (int saleID) =>
-//{
-//    AutorentContext _autorent = new AutorentContext();
-//    _autorent.Categories.ToList();
-
-//    var sale = _autorent.Sales.FirstOrDefault(x => x.Id == saleID);
-
-//    return JsonConvert.SerializeObject(sale, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-//}).RequireAuthorization("user");
+// WEBSOCKET
+var serviceScopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+var serviceProvider = serviceScopeFactory.CreateScope().ServiceProvider;
+app.UseWebSockets();
+app.MapWebSocketManager("/ws/users", serviceProvider.GetService<UserHandler>());
 
 app.Run();
