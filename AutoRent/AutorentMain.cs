@@ -94,5 +94,17 @@ namespace AutoRent
         {
             PopulateCars(showingDiscountedOnly);
         }
+
+        private void button_previousRents_Click(object sender, EventArgs e)
+        {
+            AutorentRentals rentals = new AutorentRentals();
+            this.Hide();
+            rentals.Show();
+            rentals.FormClosed += AutorentRentals_FormClosed;
+        }
+        private void AutorentRentals_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
     }
 }

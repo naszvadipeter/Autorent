@@ -74,6 +74,12 @@
     <Compile Include="AutorentMain.Designer.cs">
       <DependentUpon>AutorentMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="AutorentRentals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutorentRentals.Designer.cs">
+      <DependentUpon>AutorentRentals.cs</DependentUpon>
+    </Compile>
     <Compile Include="CarCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +94,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RentalCard.Designer.cs">
+      <DependentUpon>RentalCard.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AutorentAdmin.resx">
       <DependentUpon>AutorentAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AutorentMain.resx">
       <DependentUpon>AutorentMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutorentRentals.resx">
+      <DependentUpon>AutorentRentals.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CarCard.resx">
       <DependentUpon>CarCard.cs</DependentUpon>
@@ -113,6 +128,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RentalCard.resx">
+      <DependentUpon>RentalCard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

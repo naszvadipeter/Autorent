@@ -128,4 +128,42 @@ app.MapPost("/addRental", (Rental rental) =>
         return Results.Ok("OK");
 }).RequireAuthorization("user");
 
+// GetRentals
+app.MapGet("/getRentals", (int userID) =>
+{
+    AutorentContext _autorent = new AutorentContext();
+    _autorent.Rentals.ToList();
+    _autorent.Cars.ToList();
+    _autorent.Sales.ToList();
+    _autorent.Categories.ToList();
+    _autorent.Users.ToList();
+
+    var rentals = _autorent.Rentals.Where(x => x.UserId == userID).ToList();
+
+    //return Results.Ok(rentals);
+    return JsonConvert.SerializeObject(rentals, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+}).RequireAuthorization("user");
+
+//// GetCar
+//app.MapGet("/getCar", (int carID) =>
+//{
+//    AutorentContext _autorent = new AutorentContext();
+//    _autorent.Categories.ToList();
+
+//    var car = _autorent.Cars.FirstOrDefault(x => x.Id == carID);
+
+//    return JsonConvert.SerializeObject(car, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+//}).RequireAuthorization("user");
+
+//// GetSale
+//app.MapGet("/getSale", (int saleID) =>
+//{
+//    AutorentContext _autorent = new AutorentContext();
+//    _autorent.Categories.ToList();
+
+//    var sale = _autorent.Sales.FirstOrDefault(x => x.Id == saleID);
+
+//    return JsonConvert.SerializeObject(sale, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+//}).RequireAuthorization("user");
+
 app.Run();

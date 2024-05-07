@@ -126,5 +126,41 @@ namespace AutoRent
                 return response.Equals("\"OK\"");
             }
         }
+
+        public List<Rental> GetRentals(int userID)
+        {
+            using (var wb = new WebClient())
+            {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
+                var response = wb.DownloadString($"{URL}/getRentals?userID={userID}");
+                List<Rental> rentalList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Rental>>(response);
+                return rentalList;
+            }
+        }
+
+        public Car GetCar(int carID)
+        {
+            using (var wb = new WebClient())
+            {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
+                var response = wb.DownloadString($"{URL}/getCar?carID={carID}");
+                Car car = Newtonsoft.Json.JsonConvert.DeserializeObject<Car>(response);
+                return car;
+            }
+        }
+
+        public Sale GetSale(int saleID)
+        {
+            using (var wb = new WebClient())
+            {
+                wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
+                wb.Encoding = Encoding.UTF8;
+                var response = wb.DownloadString($"{URL}/getSale?saleID={saleID}");
+                Sale sale = Newtonsoft.Json.JsonConvert.DeserializeObject<Sale>(response);
+                return sale;
+            }
+        }
     }
 }

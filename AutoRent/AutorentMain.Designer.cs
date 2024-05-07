@@ -78,6 +78,7 @@
             this.button_previousRents.TabIndex = 4;
             this.button_previousRents.Text = "Show my previous rents";
             this.button_previousRents.UseVisualStyleBackColor = false;
+            this.button_previousRents.Click += new System.EventHandler(this.button_previousRents_Click);
             // 
             // comboBox_category
             // 
