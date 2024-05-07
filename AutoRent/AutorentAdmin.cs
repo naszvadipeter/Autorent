@@ -22,21 +22,38 @@ namespace AutoRent
 
             connection = new Connection();
             this.user = loggedInUser;
+
+            LoadAllUsers();
         }
 
-        private void button_showAllUsers_Click(object sender, EventArgs e)
+        private async void LoadAllUsers()
         {
-            List<User> users = connection.GetAllUsers();
+            await new ConnectionWebSocket(ref dataGridView_AllUsers).ConnectWebSocketAsync();
+        }
 
-            dataGridView_AllUsers.DataSource = users.Select(x => new 
+        private async void button_addNewUser_Click(object sender, EventArgs e)
+        {
+            // Get data from inputs
+            string username = textBox_name.Text;
+            string password = textBox_password.Text;
+            string name = textBox_name.Text;
+            string role = comboBox_role.SelectedItem?.ToString() ?? null;
+
+            // Check data
+            if(username.Equals(string.Empty) || password.Equals(string.Empty) ||  name.Equals(string.Empty) || role == null)
             {
-                x.Id, 
-                x.Username,
-                x.Name,
-                x.Password,
-                x.Role,
-                Rentals = x.Rentals.Count,
-            }).ToList();
+                MessageBox.Show("Fill all form inputs!");
+                return;
+            }
+            
+            // Add new user
+            await new ConnectionWebSocket(ref dataGridView_AllUsers).SendMessageAsync(username, password, name, role);
+
+            // Reset inputs
+            textBox_username.Text = string.Empty;
+            textBox_password.Text = string.Empty;
+            textBox_name.Text = string.Empty;
+            comboBox_role.SelectedItem = null;
         }
     }
 }

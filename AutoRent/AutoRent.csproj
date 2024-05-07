@@ -87,6 +87,7 @@
       <DependentUpon>CarCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Connection.cs" />
+    <Compile Include="ConnectionWebSocket.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Rental.cs" />
