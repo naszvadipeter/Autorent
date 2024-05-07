@@ -30,7 +30,6 @@
         {
             this.panel_menu = new System.Windows.Forms.Panel();
             this.button_logout = new System.Windows.Forms.Button();
-            this.button_news = new System.Windows.Forms.Button();
             this.button_previousRents = new System.Windows.Forms.Button();
             this.comboBox_category = new System.Windows.Forms.ComboBox();
             this.label_category = new System.Windows.Forms.Label();
@@ -44,7 +43,6 @@
             // 
             this.panel_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
             this.panel_menu.Controls.Add(this.button_logout);
-            this.panel_menu.Controls.Add(this.button_news);
             this.panel_menu.Controls.Add(this.button_previousRents);
             this.panel_menu.Controls.Add(this.comboBox_category);
             this.panel_menu.Controls.Add(this.label_category);
@@ -69,24 +67,12 @@
             this.button_logout.UseVisualStyleBackColor = false;
             this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
             // 
-            // button_news
-            // 
-            this.button_news.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(89)))), ((int)(((byte)(78)))));
-            this.button_news.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_news.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
-            this.button_news.Location = new System.Drawing.Point(34, 280);
-            this.button_news.Name = "button_news";
-            this.button_news.Size = new System.Drawing.Size(222, 56);
-            this.button_news.TabIndex = 5;
-            this.button_news.Text = "News";
-            this.button_news.UseVisualStyleBackColor = false;
-            // 
             // button_previousRents
             // 
             this.button_previousRents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(89)))), ((int)(((byte)(78)))));
             this.button_previousRents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_previousRents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(203)))), ((int)(((byte)(5)))));
-            this.button_previousRents.Location = new System.Drawing.Point(34, 342);
+            this.button_previousRents.Location = new System.Drawing.Point(34, 328);
             this.button_previousRents.Name = "button_previousRents";
             this.button_previousRents.Size = new System.Drawing.Size(222, 90);
             this.button_previousRents.TabIndex = 4;
@@ -172,7 +158,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_cars;
         private System.Windows.Forms.Button button_showAll;
         private System.Windows.Forms.Button button_showSale;
-        private System.Windows.Forms.Button button_news;
         private System.Windows.Forms.Button button_previousRents;
         private System.Windows.Forms.ComboBox comboBox_category;
         private System.Windows.Forms.Label label_category;
