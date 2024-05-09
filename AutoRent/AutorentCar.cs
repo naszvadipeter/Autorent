@@ -21,23 +21,29 @@ namespace AutoRent
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            this.car = car;
 
-            label_carName.Text = car.Name;
-            label_carCategory.Text = car.Category.Name;
-            label_carPriceOriginal.Text = car.DailyPrice + " Ft";
-            label_carPriceSale.Text = car.RealPrice + " Ft";
-            label_carSaleAmount.Text = "-" + car.Discount + "%";
-            pictureBox_carImage.Image = car.CarImage;
+            this.car = new Connection().GetCar(car.Id);
+            if (this.car == null)
+            {
+                MessageBox.Show("Failed to load car's data!");
+                Application.Exit();
+            }
 
-            if (car.IsDiscounted)
+            label_carName.Text = this.car.Name;
+            label_carCategory.Text = this.car.Category.Name;
+            label_carPriceOriginal.Text = this.car.DailyPrice + " Ft";
+            label_carPriceSale.Text = this.car.RealPrice + " Ft";
+            label_carSaleAmount.Text = "-" + this.car.Discount + "%";
+            pictureBox_carImage.Image = this.car.CarImage;
+
+            if (this.car.IsDiscounted)
             {
                 label_carPriceSale.Visible = true;
                 label_carSaleAmount.Visible = true;
                 label_carPriceOriginal.Font = new Font(label_carPriceOriginal.Font, FontStyle.Strikeout);
             }
 
-            List<string> unavailableDays = car.UnavailableDates;
+            List<string> unavailableDays = this.car.UnavailableDates;
             if (unavailableDays.Count > 0)
             {
                 textBox_unavailableDays.Clear();
