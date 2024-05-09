@@ -22,6 +22,11 @@ namespace AutoRent
 
             User user = Connection.User;
             List<Rental> rentals = connection.GetRentals(user.Id);
+            if (rentals == null)
+            {
+                MessageBox.Show("Failed to load rentals!");
+                Application.Exit();
+            }
             //this.label_carName.Text = rentals.Count.ToString();
 
             foreach (Rental rental in rentals)

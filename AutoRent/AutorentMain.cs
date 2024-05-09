@@ -29,6 +29,12 @@ namespace AutoRent
             showingDiscountedOnly = false;
 
             categories = connection.GetAllCategories();
+            if(categories == null)
+            {
+                MessageBox.Show("Failed to load categories!");
+                Application.Exit();
+            } 
+
             comboBox_category.Items.Add("All");
             foreach (Category category in categories)
             {
@@ -44,6 +50,12 @@ namespace AutoRent
             int filterID = comboBox_category.SelectedIndex;
 
             List<Car> cars = connection.GetAllCars();
+            if (cars == null)
+            {
+                MessageBox.Show("Failed to load cars!");
+                Application.Exit();
+            }
+
             if (flowLayoutPanel_cars.Controls.Count > 0)
             {
                 flowLayoutPanel_cars.Controls.Clear();

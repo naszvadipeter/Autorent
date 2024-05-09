@@ -27,7 +27,14 @@ namespace AutoRent
                 var dataString = JsonConvert.SerializeObject(new { username = username, password = password });
                 client.Headers.Add(HttpRequestHeader.ContentType, "" + "application/json");
                 client.Encoding = Encoding.UTF8;
-                string response = client.UploadString(new Uri($"{URL}/login"), "POST", dataString);     
+                string response;
+                try
+                {
+                    response = client.UploadString(new Uri($"{URL}/login"), "POST", dataString);
+                }catch (Exception ex)
+                {
+                    return null;
+                }
 
                 var result = JsonConvert.DeserializeAnonymousType(response, new { Token = "", User = new User() });
                 BearerToken = result.Token;
@@ -43,7 +50,15 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getUser?id={userId}");
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getUser?id={userId}");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
 
                 User user = JsonConvert.DeserializeObject<User>(response);
 
@@ -57,7 +72,15 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getAllUsers");
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getAllUsers");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
 
                 List<User> users = JsonConvert.DeserializeObject<List<User>>(response);
 
@@ -71,7 +94,16 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getAllCars");
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getAllCars");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
                 List<Car> carsList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Car>>(response);
                 return carsList;
             }
@@ -83,7 +115,16 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getCarImage?carId={carId}");
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getCarImage?carId={carId}");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
                 byte[] imageBytes = JsonConvert.DeserializeObject<byte[]>(response);
 
                 Image image;
@@ -107,7 +148,16 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getAllCategories");
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getAllCategories");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
                 List<Category> categoryList = JsonConvert.DeserializeObject<List<Category>>(response);
                 return categoryList;
             }
@@ -121,7 +171,15 @@ namespace AutoRent
                 var dataString = JsonConvert.SerializeObject(new { UserId, CarId, FromDate, ToDate });
                 client.Headers.Add(HttpRequestHeader.ContentType, "" + "application/json");
                 client.Encoding = Encoding.UTF8;
-                string response = client.UploadString(new Uri($"{URL}/addRental"), "POST", dataString);
+                string response;
+                try
+                {
+                    response = client.UploadString(new Uri($"{URL}/addRental"), "POST", dataString);
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
 
                 return response.Equals("\"OK\"");
             }
@@ -133,8 +191,17 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getRentals?userID={userID}");
-                List<Rental> rentalList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Rental>>(response);
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getRentals?userID={userID}");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+                List<Rental> rentalList = JsonConvert.DeserializeObject<List<Rental>>(response);
                 return rentalList;
             }
         }
@@ -145,8 +212,17 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getCar?carID={carID}");
-                Car car = Newtonsoft.Json.JsonConvert.DeserializeObject<Car>(response);
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getCar?carID={carID}");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+                Car car = JsonConvert.DeserializeObject<Car>(response);
                 return car;
             }
         }
@@ -157,8 +233,17 @@ namespace AutoRent
             {
                 wb.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {BearerToken}");
                 wb.Encoding = Encoding.UTF8;
-                var response = wb.DownloadString($"{URL}/getSale?saleID={saleID}");
-                Sale sale = Newtonsoft.Json.JsonConvert.DeserializeObject<Sale>(response);
+                string response;
+                try
+                {
+                    response = wb.DownloadString($"{URL}/getSale?saleID={saleID}");
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+                Sale sale = JsonConvert.DeserializeObject<Sale>(response);
                 return sale;
             }
         }
