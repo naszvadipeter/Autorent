@@ -149,6 +149,33 @@ app.MapGet("/getRentals", (int userID) =>
     return JsonConvert.SerializeObject(rentals, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 }).RequireAuthorization("user");
 
+// GetCar
+app.MapGet("/getCar", (int carID) =>
+{
+    AutorentContext _autorent = new AutorentContext();
+    _autorent.Rentals.ToList();
+    _autorent.Categories.ToList();
+
+    Car? car = _autorent.Cars.FirstOrDefault(x => x.Id == carID);
+    if (car == null)
+        return null;
+
+    var carWithImage = new
+    {
+        car.Id,
+        car.CategoryId,
+        car.Brand,
+        car.Model,
+        car.DailyPrice,
+        car.Category,
+        car.Rentals,
+        car.Sale,
+        ByteImage = File.Exists($"img/{car.Id}.jpg") ? File.ReadAllBytes($"img/{car.Id}.jpg") : null
+    };
+
+    return JsonConvert.SerializeObject(carWithImage, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+}).RequireAuthorization("user");
+
 // WEBSOCKET
 var serviceScopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
 var serviceProvider = serviceScopeFactory.CreateScope().ServiceProvider;
