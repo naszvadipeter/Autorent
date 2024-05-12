@@ -12,6 +12,7 @@
 ### Adatbázis export (SQL dump): [`00_Documentation / autorent.sql`](/00_Documentation/autorent.sql)
 ### API dokumentáció: [`00_Documentation / api_documentation.md`](/00_Documentation/api_documentation.md)
 ### Authentication és Authorization dokumentáció: [`00_Documentation / auth_documentation.md`](/00_Documentation/auth_documentation.md)
+### WebSocket dokumentáció: [`00_Documentation / websocket_documentation.md`](/00_Documentation/websocket_documentation.md)
 
 <br />
 
@@ -29,10 +30,10 @@
 - [x] Autók listázása
 - [x] Szűrés kategóriák szerint
 - [x] Autók kölcsönzése (kliens oldalon a foglalási adatok csak újboli bejelentkezés után frissülnek, később ez javítva lesz)
-- [ ] Kölcsönzések megtekintése
+- [x] Kölcsönzések megtekintése
 
 ### Mérföldkövek
 - [x] Szerver - kliens kommunikáció
 - [x] Adatbázis kapcsolat
 - [x] Authentikáció - Authorizáció
-- [ ] WebSocket
+- [x] WebSocket
