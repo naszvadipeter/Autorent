@@ -12,3 +12,5 @@ Server oldalon a végpontok védelme:
 - `GetCarImage:` Bármely szerepkör megfelelő
 - `GetAllCategories:` Bármely szerepkör megfelelő
 - `AddRental:` User szerepkör szükséges
+- `GetRentals:` User szerepkör szükséges
+- `GetCar:` User szerepkör szükséges
