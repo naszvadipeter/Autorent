@@ -300,3 +300,91 @@ Művelet eredménye:
 "ERROR"
 ```
 ---
+
+## GetRentals
+### `GET` `/getRentals`
+Az adatbázisban szereplő, paraméterben megadott `userID`-hez tartozó kölcsönzéseket adja eredményül.
+
+`User` szerep szükséges.
+
+### Request
+`JWT token a header-ben.`
+
+```
+/getRentals?userId=1
+```
+### Response
+A kölcsönzések `JSON` formátumban.
+```json
+[
+    {
+        "Id": 1,
+        "UserId": 1,
+        "CarId": 1,
+        "FromDate": "2024-03-30",
+        "ToDate": "2024-04-02",
+        "Created": "2024-03-30T16:58:36",
+        "Car": {
+            "Id": 1,
+            "CategoryId": 3,
+            "Brand": "Audi",
+            "Model": "E-Tron",
+            "DailyPrice": 20000,
+            "SaleId": null,
+            "Category": {
+                "Id": 3,
+                "Name": "Electric"
+            }
+        },
+        "User": {
+            "Id": 1,
+            "Username": "mark",
+            "Name": "Márk",
+            "Password": "12345",
+            "Role": "user"
+        }
+    }
+]
+```
+---
+
+## GetCar
+### `GET` `/getCar`
+Az adatbázisban szereplő, paraméterben megadott `carID`-hez tartozó autó adatait (és az autóhoz tartozó képet) adja eredményül.
+
+`User` szerep szükséges.
+
+### Request
+`JWT token a header-ben.`
+
+```
+/getCar?carId=1
+```
+### Response
+Az autó (és a kép) `JSON` formátumban.
+```json
+{
+  "Id": 1,
+  "CategoryId": 3,
+  "Brand": "Audi",
+  "Model": "E-Tron",
+  "DailyPrice": 20000,
+  "Category": {
+    "Id": 3,
+    "Name": "Electric"
+  },
+  "Rentals": [
+    {
+      "Id": 1,
+      "UserId": 2,
+      "CarId": 1,
+      "FromDate": "2024-03-30",
+      "ToDate": "2024-04-02",
+      "Created": "2024-03-30T16:58:36"
+    }
+  ],
+  "Sale": null,
+  "ByteImage": "iVBO...."
+}
+```
+---
